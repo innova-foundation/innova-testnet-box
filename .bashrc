@@ -18,5 +18,5 @@ alias ll='ls -l'
 alias lh='ls -lh'
 alias la='ls -Al'
 
-alias b1='bitcoin-cli -datadir=1 '
-alias b2='bitcoin-cli -datadir=2 '
+alias b1='innova-cli -datadir=1 '
+alias b2='innova-cli -datadir=2 '

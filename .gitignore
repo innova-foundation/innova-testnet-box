@@ -1,5 +1,5 @@
 .project
-
+.DS_Store
 ?/blocks
 ?/regtest/*
 !?/regtest/server.pem

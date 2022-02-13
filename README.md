@@ -1,9 +1,9 @@
-# bitcoin-testnet-box
-[![docker pulls](https://img.shields.io/docker/pulls/freewil/bitcoin-testnet-box.svg?style=flat)](https://hub.docker.com/r/freewil/bitcoin-testnet-box/)
+# innova-testnet-box
+[![docker pulls](https://img.shields.io/docker/pulls/innova-foundation/innova-testnet-box.svg?style=flat)](https://hub.docker.com/r/innova-foundation/innova-testnet-box/)
 
-Create your own private bitcoin testnet
+Create your own private innova testnet
 
-You must have `bitcoind` and `bitcoin-cli` installed on your system and in the
+You must have `innovad` and `innova-cli` installed on your system and in the
 path unless running this within a [Docker](https://www.docker.com) container
 (see [below](#using-with-docker)).
 
@@ -18,12 +18,12 @@ earlier history of the repo, where some testnet data was included.
 
 ### Regular Clone
 ```
-git clone git@github.com:freewil/bitcoin-testnet-box.git
+git clone git@github.com:innova-foundation/innova-testnet-box.git
 ```
 
 ### Shallow Clone
 ```
-git clone --shallow-since 2014-10-18 git@github.com:freewil/bitcoin-testnet-box.git
+git clone --shallow-since 2014-10-18 git@github.com:innova-foundation/innova-testnet-box.git
 ```
 
 ## Starting the testnet-box
@@ -48,7 +48,7 @@ $ make start
 
 ```
 $ make getinfo
-bitcoin-cli -datadir=1  getinfo
+innova-cli -datadir=1  getinfo
 {
     "version" : 90300,
     "protocolversion" : 70002,
@@ -66,7 +66,7 @@ bitcoin-cli -datadir=1  getinfo
     "relayfee" : 0.00001000,
     "errors" : ""
 }
-bitcoin-cli -datadir=2  getinfo
+innova-cli -datadir=2  getinfo
 {
     "version" : 90300,
     "protocolversion" : 70002,
@@ -88,17 +88,17 @@ bitcoin-cli -datadir=2  getinfo
 ## Creating wallets
 
 ```
-bitcoin-cli -datadir=1 createwallet wallet1
+innova-cli -datadir=1 createwallet wallet1
 ```
 
 ```
-bitcoin-cli -datadir=2 createwallet wallet2
+innova-cli -datadir=2 createwallet wallet2
 ```
 
 ## Generating blocks
 
-Normally on the live, real, bitcoin network, blocks are generated, on average,
-every 10 minutes. Since this testnet-in-box uses Bitcoin Core's (bitcoind)
+Normally on the live, real, innova network, blocks are generated, on average,
+every 10 minutes. Since this testnet-in-box uses Bitcoin Core's (innovad)
 regtest mode, we are able to generate a block on a private network
 instantly using a simple command.
 
@@ -129,8 +129,8 @@ $ make getinfo
 $ make address2
 ```
 
-## Sending bitcoins
-To send bitcoins that you've generated to the second wallet: (be sure to change the ADDRESS value below to wallet address generated in the prior command)
+## Sending innovas
+To send innovas that you've generated to the second wallet: (be sure to change the ADDRESS value below to wallet address generated in the prior command)
 
 ```
 $ make sendfrom1 ADDRESS=mxwPtt399zVrR62ebkTWL4zbnV1ASdZBQr AMOUNT=10
@@ -167,24 +167,24 @@ an isolated container.
 ### Building docker image
 
 Pull the image
-  * `docker pull freewil/bitcoin-testnet-box`
+  * `docker pull innova-foundation/innova-testnet-box`
 
 or build it yourself from this directory
-  * `docker build -t bitcoin-testnet-box .`
+  * `docker build -t innova-testnet-box .`
 
 ### Running docker container
-The docker image will run two bitcoin nodes in the background and is meant to be
+The docker image will run two innova nodes in the background and is meant to be
 attached to allow you to type in commands. The image also exposes
 the two JSON-RPC ports from the nodes if you want to be able to access them
 from outside the container.
       
-   `$ docker run -t -i -p 19001:19001 -p 19011:19011 freewil/bitcoin-testnet-box`
+   `$ docker run -t -i -p 19001:19001 -p 19011:19011 innova-foundation/innova-testnet-box`
 
 or if you built the docker image yourself:
 
-   `$ docker run -t -i -p 19001:19001 -p 19011:19011 bitcoin-testnet-box`
+   `$ docker run -t -i -p 19001:19001 -p 19011:19011 innova-testnet-box`
 
 ## Running without docker
 To run without docker, one should download the supported Bitcoin core version. 
-To find the supported version, search for the `BITCOIN_CORE_VERSION` environment variable
+To find the supported version, search for the `INNOVA_CORE_VERSION` environment variable
 in the `Dockerfile` file.
